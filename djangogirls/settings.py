@@ -43,7 +43,6 @@ DJANGO_APPS = [
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
-    'crispy_forms',
 ]
 LOCAL_APPS = [
     'blog'
@@ -80,8 +79,8 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'djangogirls.wsgi.application'
-WSGI_APPLICATION = 'config.wsgi.application' 
+WSGI_APPLICATION = 'djangogirls.wsgi.application'
+
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
