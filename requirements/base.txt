@@ -1,1 +1,5 @@
+#Django
 Django==2.0
+
+# Material_Css
+django-material==1.2.2
