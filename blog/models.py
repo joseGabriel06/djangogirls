@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-
+from django.urls import reverse
 
 class Post(models.Model):
     owner = models.ForeignKey('auth.User', on_delete=models.CASCADE)
@@ -14,11 +14,9 @@ class Post(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    #def get_absolute_url(self):
-    #    view_name = "detail"
-    #    return reverse(view_name, kwargs={"pk": self.id})
-    
-
+    def get_absolute_url(self):
+        view_name = "detail"
+        return reverse(view_name, kwargs={"pk": self.id})
 
     def __str__(self):
         return self.title

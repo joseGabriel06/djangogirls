@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
+from django.views.generic.detail import DetailView
 from .models import Post
 from .forms import PostForm
 
@@ -19,3 +20,7 @@ class PostCreateView(CreateView):
         furmulario.save()
         self.object = furmulario
         return redirect('index')
+
+
+class PostDeleteView(DetailView):
+    model = Post
