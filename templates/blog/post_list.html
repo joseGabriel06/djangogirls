@@ -9,10 +9,11 @@
             hace {{ publisher.timestamp|timesince }}
         </p>
         <h4>
-            <a class="title_card" href="{{ publisher.get_absolute_url }}">{{ publisher.title }}</a>
+            <a class="title_primay" href="{{ publisher.get_absolute_url }}">{{ publisher.title }}</a>
         </h4>
         <blockquote>
-            <p> {{ publisher.text|linebreaksbr }}</p>
+            <p > {{ publisher }}</p>
+            <!-- |linebreaksbr -->
         </blockquote>
     </div>
     {% endfor %}
@@ -22,10 +23,5 @@
           <i class="large material-icons">add</i>
     </a>
 </div>
-<style>
-    .title_card {
-        font-family: 'Lobster';
-        color: black;
-    }
-</style>
+
 {% endblock %}

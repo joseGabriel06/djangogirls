@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 
+
 class Post(models.Model):
     owner = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -16,7 +17,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         view_name = "detail"
-        return reverse(view_name, kwargs={"pk": self.id})
+        return reverse(view_name, kwargs={"pk": self.pk})
 
     def __str__(self):
-        return self.title
+        return self.text[:100]

@@ -45,6 +45,9 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'material', # framework css
     'material.frontend', # framework css
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 LOCAL_APPS = [
     'blog'
@@ -113,6 +116,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
@@ -133,5 +144,12 @@ SITE_ID = 1
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/media/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+
+
+STATIC_ROOT = os.path.join((BASE_DIR), "venv","static_env","static_root")
+MEDIA_ROOT = os.path.join((BASE_DIR),  "venv","static_env","media_root")
