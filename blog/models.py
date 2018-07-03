@@ -5,11 +5,12 @@ from django.urls import reverse
 
 class Post(models.Model):
     owner = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=100, null=False, blank=False)
     text = models.TextField()
     timestamp = models.DateField(
         default=timezone.now)
     draft = models.BooleanField()
+    
 
     def publish(self):
         self.published_date = timezone.now()
@@ -20,4 +21,4 @@ class Post(models.Model):
         return reverse(view_name, kwargs={"pk": self.pk})
 
     def __str__(self):
-        return self.text[:100]
+        return self.text[:150]

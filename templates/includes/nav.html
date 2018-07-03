@@ -1,25 +1,29 @@
 {% load i18n %}
-<!-- Dropdown Structure -->
-<ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">one</a></li>
-    <li><a href="#!">two</a></li>
-    <li class="divider"></li>
-    {% if user.is_authenticated %}
-    <li><a href="{% url 'account_logout' %}">{% trans 'Sign Out' %}</a></li>
-    {% endif %}
-  </ul>
-  <nav >
-    <div class="nav-wrapper container">
-      <a href="{% url 'index' %}" class="brand-logo title_primay" >Django Girls</a>
-      <ul class="right hide-on-med-and-down">
-        {% if user.is_authenticated %}
-        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ user.get_username }}<i class="material-icons right">arrow_drop_down</i></a></li>
-        {% else %}
-        <li><a class="waves-effect waves-light btn" href="{% url 'account_login' %}">Inicia sesión</a></li>
-        {% endif %}
-        
-        
-      </ul>
-    </div>
-  </nav>
-          
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-warning">
+  <a class="navbar-brand title_primay" href="{% url 'index' %}">Django girls</a>
+
+  {% if user.is_authenticated %}
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+      
+      <li class="nav-item dropdown">
+        <a class="nav-item text-white dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <img src="https://avatars1.githubusercontent.com/u/17889145?s=400&u=2dcaf1027f78a6e9256d6469c4af1fd656a821c5&v=4" alt="ss" width="25px" height="25px"  class="rounded-circle">
+          {{ user.get_username }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+            <a class="dropdown-item" href="{% url 'create_post' %}" >Nuevo post</a>
+          <a class="dropdown-item" href="{% url 'account_logout' %}" >Cerrar sesion</a>
+        </div>
+      </li>
+    </ul>
+  {% else %}
+  <li class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+      <a class="btn btn btn-outline-light" href="{% url 'account_login' %}">iniciar sesion</a>
+    </li>
+  {% endif %}
+</nav>
+<br>
+<br>
+<br>
+<br>

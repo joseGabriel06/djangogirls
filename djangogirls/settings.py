@@ -43,11 +43,10 @@ DJANGO_APPS = [
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
-    'material', # framework css
-    'material.frontend', # framework css
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',
 ]
 LOCAL_APPS = [
     'blog'
@@ -150,6 +149,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STATIC_ROOT = os.path.join((BASE_DIR), "venv","static_env","static_root")
 MEDIA_ROOT = os.path.join((BASE_DIR),  "venv","static_env","media_root")

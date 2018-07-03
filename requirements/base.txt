@@ -1,5 +1,8 @@
 #Django
 Django==2.0
 
-# Material_Css
-django-material==1.2.2
+# forms
+django-crispy-forms==1.7.2
+
+#imagenes 
+Pillow==5.1.0

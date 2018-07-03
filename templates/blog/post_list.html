@@ -1,27 +1,22 @@
-{% extends "base.html" %}
-{% load humanize %}
-
+{% extends "base.html" %} 
+{% load humanize %} 
 {% block content %}
-<div class="container" >
-    {% for publisher in object_list %}
-    <div class="row">
-        <p class="right" style="color: #9e9e9e">
-            hace {{ publisher.timestamp|timesince }}
-        </p>
-        <h4>
-            <a class="title_primay" href="{{ publisher.get_absolute_url }}">{{ publisher.title }}</a>
-        </h4>
-        <blockquote>
-            <p > {{ publisher }}</p>
-            <!-- |linebreaksbr -->
-        </blockquote>
+<div>
+    <h2 style="text-align: center" class="title_primay">Blog</h2>
+</div>
+<div class="container ">
+    {% for object in object_list %}
+    <div class="card  mb-3  " style="max-width: 100%;">
+        <div class="card-body ">
+            <p class="card-text text-right "><small class="text-muted">{{ object.timestamp }}</small></p>
+            <h2 class="" style="font-family: 'Lobster';" >{{ object.title|title }}</h2>
+            <p class="card-text">{{ object }}</p>   
+        </div>
     </div>
+    {% empty %}
+        <div class="alert alert-warning" role="alert">
+            No hay post que mostrar
+        </div>
     {% endfor %}
 </div>
-<div class="fixed-action-btn">
-    <a class="btn-floating btn-large amber darken-3" href="{% url 'create_post' %}">
-          <i class="large material-icons">add</i>
-    </a>
-</div>
-
 {% endblock %}

@@ -1,8 +1,8 @@
 {% extends "account/base.html" %}
-
+{% load crispy_forms_tags %}
 {% load i18n %}
 {% load account socialaccount %}
-{% load material_form %}
+
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
@@ -32,25 +32,24 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 {% include "socialaccount/snippets/login_extra.html" %}
 
 {% else %}
-<div class="container">
+<!-- <div class="container">
     <p>{% blocktrans %}If you have not created an account yet, then please
     <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-</div>
+</div> -->
 
 {% endif %}
 
 <div class="container">
   <form class="login" method="POST" action="{% url 'account_login' %}">
     {% csrf_token %}
-    {% form form=form %}{% endform %}
+    {{ form|crispy }}
     {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
     {% endif %}
     <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
     <br>
-    <button class="btn waves-effect waves-light primaryAction" type="submit" name="action">{% trans "Sign In" %}
-      <i class="material-icons right">send</i>
-    </button>
+    <br>
+    <button type="submit" class="btn btn-warning btn-lg">{% trans "Sign In" %}</button>
   </form>  
 </div>
 
