@@ -23,5 +23,5 @@ class PostCreateView(LoginRequiredMixin,CreateView):
         return redirect('index')
 
 
-class PostDeleteView(DetailView):
+class PostDetailView(DetailView):
     model = Post

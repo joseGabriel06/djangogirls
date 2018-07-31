@@ -6,3 +6,6 @@ django-crispy-forms==1.7.2
 
 #imagenes 
 Pillow==5.1.0
+
+#allauth
+django-allauth==0.36.0
